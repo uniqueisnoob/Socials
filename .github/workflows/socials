@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uniquest | Official</title>
+
+<style>
+:root{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#f1f5f9;
+  --accent:#1DA1F2;
+}
+
+body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition:0.4s;
+}
+
+.light{
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#0f172a;
+}
+
+.container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+}
+
+.card{
+  background:var(--card);
+  backdrop-filter: blur(20px);
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  width:100%;
+  max-width:500px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  transition:0.4s;
+}
+
+h1{
+  font-size:28px;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.verified{
+  width:22px;
+  height:22px;
+}
+
+.followers{
+  margin:20px 0;
+  font-size:18px;
+  opacity:0.8;
+}
+
+.counter{
+  font-size:26px;
+  font-weight:bold;
+  color:var(--accent);
+}
+
+.social{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  margin-top:25px;
+}
+
+.social a{
+  text-decoration:none;
+  padding:14px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#1DA1F2,#2563eb);
+  color:white;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.social a:nth-child(2){
+  background:linear-gradient(135deg,#1877F2,#0d47a1);
+}
+
+.social a:nth-child(3){
+  background:linear-gradient(135deg,#e1306c,#833ab4);
+}
+
+.social a:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(0,0,0,0.4);
+}
+
+.toggle{
+  margin-top:30px;
+  cursor:pointer;
+  padding:8px 15px;
+  border-radius:20px;
+  border:none;
+  background:var(--accent);
+  color:white;
+  font-weight:bold;
+}
+
+footer{
+  margin-top:25px;
+  font-size:14px;
+  opacity:0.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <h1>
+      Uniquest
+      <!-- X Style Verified Badge -->
+      <svg class="verified" viewBox="0 0 24 24" fill="#1DA1F2">
+        <path d="M22.5 12l-2.3 2.1.4 3-2.9.7-1.6 2.6-2.9-1.2-2.9 1.2-1.6-2.6-2.9-.7.4-3L1.5 12l2.3-2.1-.4-3 2.9-.7 1.6-2.6 2.9 1.2 2.9-1.2 1.6 2.6 2.9.7-.4 3L22.5 12z"/>
+        <path d="M10 14.5l-2-2 1.2-1.2 0.8 0.8 3.5-3.5 1.2 1.2z" fill="white"/>
+      </svg>
+    </h1>
+
+    <div class="followers">
+      Total Followers
+      <div class="counter" id="count">0</div>
+    </div>
+
+    <div class="social">
+      <a href="https://x.com/Uniquest227748" target="_blank">🐦 Follow on X</a>
+      <a href="https://www.facebook.com/uniquest2" target="_blank">📘 Follow on Facebook</a>
+      <a href="https://www.instagram.com/uniquest11" target="_blank">📸 Follow on Instagram</a>
+    </div>
+
+    <button class="toggle" onclick="toggleMode()">Toggle Dark / Light</button>
+
+    <footer>
+      © <span id="year"></span> Uniquest. All Rights Reserved.
+    </footer>
+
+  </div>
+</div>
+
+<script>
+// Followers Animation
+let count = 0;
+let target = 4000;
+let speed = 15;
+
+let counter = setInterval(()=>{
+  count += 50;
+  document.getElementById("count").innerText = (count/1000).toFixed(1)+"K+";
+  if(count >= target){
+    clearInterval(counter);
+    document.getElementById("count").innerText = "4K+";
+  }
+},speed);
+
+// Dark/Light Mode
+function toggleMode(){
+  document.body.classList.toggle("light");
+}
+
+// Auto Year
+document.getElementById("year").innerText = new Date().getFullYear();
+</script>
+
+</body>
+</html>
