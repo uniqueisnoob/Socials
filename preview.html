@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        body.light {
+            background-color: #ffffff;
+            color: #000;
+        }
+        body.dark {
+            background-color: #333;
+            color: #fff;
+        }
+        .toggle {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body class="light">
+    <button class="toggle">Switch to Dark Mode</button>
+    <h1>Welcome to my Profile</h1>
+    <p>Followers: <span id="follower-count">0</span></p>
+    <script>
+        const button = document.querySelector('.toggle');
+        const body = document.body;
+        const followerCount = document.getElementById('follower-count');
+        let followers = 0;
+
+        button.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            body.classList.toggle('light');
+            button.textContent = body.classList.contains('dark') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+        });
+
+        // Simulating follower count
+        function updateFollowerCount() {
+            followers += 1;
+            followerCount.textContent = followers;
+        }
+
+        // Example of updating followers
+        setInterval(updateFollowerCount, 5000); // Increase follower count every 5 seconds
+    </script>
+</body>
+</html>
